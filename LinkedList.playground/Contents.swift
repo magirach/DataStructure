@@ -66,7 +66,7 @@ example(of: "Duplicate nodes") {
     print(list1)
 }
 
-example(of: "Duplicate nodes") {
+example(of: "get node at index") {
     var list1 = LinkedList<Int>()
     list1.append(Node(value: 30))
     list1.append(Node(value: 3))
