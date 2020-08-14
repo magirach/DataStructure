@@ -21,11 +21,11 @@ extension Character: Codable {
 }
 
 class Node: Codable {
-    var value: String?
-    var nodes: [String: Node] = [:]
+    var value: Character?
+    var nodes: [Character: Node] = [:]
     var isEnd: Bool = false
     
-    init(value: String?) {
+    init(value: Character?) {
         self.value = value
     }
 }
@@ -36,25 +36,28 @@ class Trie: Codable {
     func insert(word: String) {
         var current = root
         for char in word {
-            if current.nodes[String(char)] == nil {
-                current.nodes[String(char)] = Node(value: String(char))
+            if current.nodes[char] == nil {
+                current.nodes[char] = Node(value: char)
             }
-            current = current.nodes[String(char)]!
+            current = current.nodes[char]!
         }
         current.isEnd = true
     }
     
-    func elements(prefix: String) -> [String] {
+    func elements(prefix: String) -> (words: [String], time: Int) {
+        let start = Date().timeIntervalSince1970 * 1000
         var current = root
         for char in prefix {
-            if current.nodes[String(char)] != nil {
-                current = current.nodes[String(char)]!
+            if current.nodes[char] != nil {
+                current = current.nodes[char]!
             } else {
-                return []
+                return ([], 0)
             }
         }
         
-        return words(prefix: prefix, after: current)
+        let wrds = words(prefix: prefix, after: current)
+        let end = Date().timeIntervalSince1970 * 1000
+        return (wrds, Int(end - start))
     }
     
     func words(prefix: String, after: Node) -> [String] {
@@ -71,7 +74,7 @@ class Trie: Codable {
     }
 }
 
-let trie = Trie()
+var trie = Trie()
 trie.insert(word: "Moinuddin")
 trie.insert(word: "Moin")
 trie.insert(word: "Apple")
@@ -79,45 +82,30 @@ print(trie.elements(prefix: "Mo"))
 
 
 func csv(data: String) -> [String] {
-    var result: [[String]] = []
     let rows = data.components(separatedBy: " \r\n")
-//    for row in rows {
-//        let columns = row.components(separatedBy: ";")
-//        result.append(columns)
-//    }
     return rows
 }
 
-//let path = Bundle.main.path(forResource: "a", ofType: "csv")
-//print(path)
-//let data = try? Data(contentsOf: URL(fileURLWithPath: path!))
-//let words = csv(data: String(data: data!, encoding: .utf8)!)
-//for word in words {
-//    trie.insert(word: word)
-//}
-//let encoder = JSONEncoder()
-//do {
-//    let data = try encoder.encode(trie)
-//    let path = Bundle.main.resourcePath
-//    let filePath = path! + "/a.txt"
-//    let pathUrl = URL(fileURLWithPath: filePath)
-//    try? data.write(to: pathUrl)
-//    print("write done")
-//} catch {
-//    print(error)
-//}
-
-let decoder = JSONDecoder()
-do {
-    let path = Bundle.main.resourcePath
-    let filePath = path! + "/a.txt"
-    let pathUrl = URL(fileURLWithPath: filePath)
-    let data = try Data(contentsOf: pathUrl)
-    let trie = try decoder.decode(Trie.self, from: data)
-    print("trie generated")
-    print(trie.elements(prefix: "a"))
-} catch {
-    print(error)
+func createTrie(fileName: String) -> Trie? {
+    do {
+        let filePath = Bundle.main.path(forResource: fileName, ofType: "csv")
+        let pathUrl = URL(fileURLWithPath: filePath!)
+        let data = try String(contentsOf: pathUrl)
+        let arr = Set(csv(data: data))
+        let trie = Trie()
+        for e in arr {
+            trie.insert(word: e)
+        }
+        print("trie generated")
+        return trie
+    } catch {
+        print(error)
+        return nil
+    }
 }
+
+trie = createTrie(fileName: "o")!
+
+print(trie.elements(prefix: "open"))
 
 

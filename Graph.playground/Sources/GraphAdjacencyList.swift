@@ -5,8 +5,8 @@ public class GraphAdjacencyList<T: Hashable> : Graph<T> {
     public override var description: String {
         var str = [String]()
         for node in nodes {
-            let val = node.relaives.map { (node) -> T in
-                return node.value
+            let val = node.relaives.map { (connection) -> T in
+                return connection.to.value
             }
             str.append("\(node.value) -> \(val)")
         }
@@ -19,7 +19,8 @@ public class GraphAdjacencyList<T: Hashable> : Graph<T> {
         return node
     }
     
-    public override func connect(node: Node<T>, to: Node<T>) {
-        to.relaives.append(node)
+    public override func connect(node: Node<T>, to: Node<T>, weight: Int = 1) {
+        let connect = Connection(node: node, weight: weight)
+        to.relaives.append(connect)
     }
 }

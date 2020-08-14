@@ -2,51 +2,96 @@ import UIKit
 
 var str = "Hello, playground"
 
-public struct MinStack {
-    private var arrStack = [Int]()
-    private var minElement: Int?
-    
-    var min: Int? {
-        return minElement
-    }
-    
-    var peek: Int? {
-        if let top = arrStack.first {
-            return top < minElement! ? minElement! : top
-        } else {
-            return nil
-        }
-    }
-    
-    mutating func push(value: Int) {
-        if arrStack.isEmpty {
-            arrStack.insert(value, at: 0)
-            minElement = value
-        } else {
-            if value < minElement! {
-                arrStack.insert(2 * value - minElement!, at: 0)
-                minElement = value
-            } else {
-                arrStack.insert(value, at: 0)
-            }
-        }
-    }
-    
-    mutating func pop() -> Int? {
-        if arrStack.isEmpty {
-           return nil
-        } else {
-            let top = arrStack.removeFirst()
-            if top < minElement! {
-                let min = minElement!
-                minElement = 2 * minElement! - top
-                return min
-            } else {
-                return top
-            }
-        }
+struct A {
+    init() {
+        
     }
 }
+
+protocol c {
+    var moin: String
+}
+
+extension A: c {
+    
+    var moin: String
+    
+    static func abcd() {
+        print("abcd")
+    }
+    
+    var d: String {
+        return "1234"
+    }
+    
+    init(b: String) {
+        print(d)
+    }
+    
+    deinit {
+        moin = ""
+    }
+}
+
+let a = A(b: "cc")
+A.abcd()
+/*
+func QuestionsMarks(_ str: String) -> String {
+  var start = -1
+  var end = -1
+  var queCount = 0
+  for comps in str {
+    if let isInt = Int(String(comps)) {
+        if start < 0 {
+            start = isInt
+        } else if isInt + start < 10 {
+            if queCount >= 3 {
+                return "true"
+            }
+        }
+    } else if String(comps) == "?" && start != -1 {
+        queCount += 1
+    }
+  }
+  // code goes here
+  // Note: feel free to modify the return type of this function
+  return "false"
+
+}
+
+QuestionsMarks("acc?7??sss?3rr1??????5")
+*/
+
+func LongestConsecutive(_ arr: [Int]) -> Int {
+
+  let sorted = arr.sorted()
+  print(sorted)
+  var max = 0
+  var first = -1
+  var count = 0
+  for element in sorted {
+    if first == -1 {
+      first = element
+      count += 1
+    } else if element - first == 1 {
+      count += 1
+      first = element
+        if count > max {
+          max = count
+        }
+    } else {
+      count = 1
+      first = element
+    }
+  }
+  // code goes here
+  // Note: feel free to modify the return type of this function
+  return max
+
+}
+
+print(LongestConsecutive([6, 7, 3, 1, 100, 102, 6, 12]))
+print(LongestConsecutive([5, 6, 1, 2, 8, 9, 7]))
 
 /*
  var stack = MinStack()
@@ -60,49 +105,25 @@ public struct MinStack {
  print(stack.min)
  stack.pop()
  print(stack.peek)
- */
+ 
 
-public struct SortedStack: CustomStringConvertible {
-    public var  description: String {
-        return "\(arrStack)"
-    }
-    
-    private var arrStack = [Int]()
-    
-    var peek: Int? {
-        return arrStack.first
-    }
-    
-    mutating func push(value: Int) {
-        if arrStack.isEmpty {
-            arrStack.insert(value, at: 0)
-        } else {
-            if value > peek! {
-                let val = pop()
-                push(value: value)
-                arrStack.insert(val!, at: 0)
-            } else {
-                arrStack.insert(value, at: 0)
-            }
-        }
-    }
-    
-    mutating func pop() -> Int? {
-        if arrStack.isEmpty {
-            return nil
-        } else {
-            return arrStack.removeFirst()
-        }
-    }
-}
-/*
-var stack = SortedStack()
-stack.push(value: -3)
-stack.push(value: 3)
-stack.push(value: 5)
-stack.push(value: 2)
-stack.push(value: 100)
-stack.push(value: 1)
 
-print(stack)
+var sstack = SortedStack()
+sstack.push(value: -3)
+sstack.push(value: 3)
+sstack.push(value: 5)
+sstack.push(value: 2)
+sstack.push(value: 100)
+sstack.push(value: 1)
+
+print(sstack)
+
+var multiS = MultipleStack(stacks: 5)
+multiS.push(value: 4, at: 0)
+multiS.push(value: 41, at: 2)
+multiS.push(value: 42, at: 1)
+multiS.push(value: 43, at: 0)
+print(multiS)
+multiS.pop(at: 2)
+print(multiS)
 */

@@ -9,7 +9,7 @@ public class GraphAdjacencyMatrix<T: Hashable> : Graph<T> {
             return node.value
         }
         str.append("\t\t\(val)")
-         for (node, connection) in zip(nodes, connected) {
+        for (node, connection) in zip(nodes, connected) {
             str.append("\(node.value) -> \t\(connection)")
         }
         return str.joined(separator: "\n")
@@ -27,8 +27,9 @@ public class GraphAdjacencyMatrix<T: Hashable> : Graph<T> {
         return node
     }
     
-    public override func connect(node: Node<T>, to: Node<T>) {
-        to.relaives.append(node)
+    public override func connect(node: Node<T>, to: Node<T>, weight: Int) {
+        let connction = Connection(node: node, weight: weight)
+        to.relaives.append(connction)
         let toIndex = nodes.firstIndex { (n) -> Bool in
             return n == to
         }
@@ -36,7 +37,7 @@ public class GraphAdjacencyMatrix<T: Hashable> : Graph<T> {
         let fromIndex = nodes.firstIndex { (n) -> Bool in
             return n == node
         }
-        connected[toIndex!][fromIndex!] = "1"
+        connected[toIndex!][fromIndex!] = "\(weight)"
     }
 }
 
