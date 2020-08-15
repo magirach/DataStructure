@@ -7,7 +7,10 @@ Data Structure practice
   - DFS
   - BFS
   
-2. Min Stack
+2. Stack
+- Min Stack : give min element in stack
+- Multi stack : multiple stacks in single array
+- Sorted stack: store sorted element in stack.
 3. Trie
   - create dictionary from csv using Trie.
   4. Linked list
