@@ -35,6 +35,8 @@ Data Structure practice
   - Logest consticutime number sequence in given array
   - Set row and col 0 if element in matrix is 0
   - Rotate Matrix
+  - Maximum difference between two elements such that larger element appears after the smaller number
+  - Find the element that appears once in a sorted array
   6. StringProblems
   - Sheck either string have unique characters
   - Check s1 and s2 anre permutation of each other
@@ -42,3 +44,8 @@ Data Structure practice
   - Compress string for ex aaabbb give a3b3
   - Ckeck string 2 is made of from rotation of character of string 1
   - Check eithr string have substrign where atleast 3 ? in between 2 integer which total is less than 10
+  - Check either string have unique characters
+  - Count All Palindrome Sub-Strings in a String
+  - Find the character in first string that is present at minimum index in second string
+  - Given a string, find its first non-repeating character
+  - list palindrome substring
