@@ -31,3 +31,14 @@ Data Structure practice
   - possible_words_from_digit : give list of all posible words from given phone number
   - SumOfDigits : give sum of all digits in given number
   - fibonaci_cache: give fibonscii seriese upto n elements.
+  5. ArrayProblems
+  - Logest consticutime number sequence in given array
+  - Set row and col 0 if element in matrix is 0
+  - Rotate Matrix
+  6. StringProblems
+  - Sheck either string have unique characters
+  - Check s1 and s2 anre permutation of each other
+  - Check string is palindrom
+  - Compress string for ex aaabbb give a3b3
+  - Ckeck string 2 is made of from rotation of character of string 1
+  - Check eithr string have substrign where atleast 3 ? in between 2 integer which total is less than 10

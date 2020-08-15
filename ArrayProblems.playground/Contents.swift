@@ -29,7 +29,7 @@ func LongestConsecutive(_ arr: [Int]) -> Int {
 print(LongestConsecutive([6, 7, 3, 1, 100, 102, 6, 12]))
 print(LongestConsecutive([5, 6, 1, 2, 8, 9, 7]))
 
-/// set orw and col 0 if  element is 0
+/// set row and col 0 if  element is 0
 /// - Parameter matrix: input matrix
 /// - Returns: out put matrix with row and col 0
 func setZeroMatrix(matrix: [[Int]]) -> [[Int]] {
