@@ -27,3 +27,4 @@ Data Structure practice
   - BinarySum : sum of two binary number strings
   - possible_words_from_digit : give list of all posible words from given phone number
   - SumOfDigits : give sum of all digits in given number
+  - fibonaci_cache: give fibonscii seriese upto n elements.
