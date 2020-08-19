@@ -12,3 +12,13 @@ findMaxDiff(arr: [100, 2, 3, 10, 6, 100, 4, 8, 1])
 
 let arr = [ 1, 1, 4, 4, 5, 5, 6, 6, 7]
 findSingleElement(arr: arr, low: 0, high: arr.count - 1)
+
+
+
+//findSingleFromArray(arr: [12, 1, 12, 3, 12, 1, 1, 2, 3, 3])
+findSingleFromArray(arr: [12, 1, 12, 3, 12, 1, 1, 2, 3, 2, 2, 3, 7])
+
+findMissingNumber(arr: [1, 2, 4, 6, 3, 7, 8])
+
+
+findMissingNumberForArithmaticProgression(arr: [2, 4, 8, 10, 12, 14])
